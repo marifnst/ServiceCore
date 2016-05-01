@@ -21,9 +21,9 @@ public class Engine1 {
 
     private UtilDatabase localUtilDatabase;
 
-    public String process(String noKartuKredit, String idValidasi) {
+    public String process(String noKartuKredit, String idValidasi, String statusTransaksi) {
         localUtilDatabase = new UtilDatabase();
-        return insertTransaksiBank(noKartuKredit, idValidasi);
+        return insertTransaksiBank(noKartuKredit, idValidasi, statusTransaksi);
     }
 
     public String process(String idTransaksiBank) {
@@ -31,7 +31,7 @@ public class Engine1 {
         return insertTransaksiKurir(idTransaksiBank);
     }
 
-    public String insertTransaksiBank(String noKartuKredit, String idValidasi) {
+    public String insertTransaksiBank(String noKartuKredit, String idValidasi, String statusTransaksi) {
         String idTransaksi = UUID.randomUUID().toString();
 
         TblTransaksiBank tblTransaksiBank = new TblTransaksiBank();
@@ -39,7 +39,7 @@ public class Engine1 {
         tblTransaksiBank.setIdValidasi(idValidasi);
         tblTransaksiBank.setIdTransaksi(idTransaksi);
         tblTransaksiBank.setNoKartuKredit(noKartuKredit);
-        tblTransaksiBank.setStatusTransaksi("SUCCESS");
+        tblTransaksiBank.setStatusTransaksi(statusTransaksi);
         tblTransaksiBank.setCreatedDate(new Date());
 
         localUtilDatabase.openConnection();
