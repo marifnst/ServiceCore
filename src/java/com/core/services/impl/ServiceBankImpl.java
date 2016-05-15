@@ -32,7 +32,8 @@ public class ServiceBankImpl implements ServiceBank {
             if (isKartuKreditValid.equals("1")) {
                 result = e1.process(noKartuKredit, idValidasi, "SUCCESS");
             } else {
-                result = e1.process(noKartuKredit, idValidasi, "FAILED_KARTU_KREDIT");
+                e1.process(noKartuKredit, idValidasi, "FAILED_KARTU_KREDIT");
+                result = "FAILED_KARTU_KREDIT";
             }
         } else if (noSimulasi.equals(2)) {
             Engine2 e2 = new Engine2();
